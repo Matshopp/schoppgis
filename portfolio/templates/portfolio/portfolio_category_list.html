@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Matthieu Schopp Portfolio</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+	<div>
+		<h1><a href="/">Matthieu Schopp Portfolio</a></h1>
+	</div>
+		{% for position in portfolio_categories.positions %}
+		<div>
+			<h3><a href="{% url 'portfolio:portfolio_item_list' position.title %}">{{position.title}}</a></h3>
+			</p>
+		</div>
+		{% endfor %}
+
+
+    </body>
+</html>

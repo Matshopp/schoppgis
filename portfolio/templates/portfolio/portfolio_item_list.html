@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Matthieu Schopp Portfolio</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+	<div>
+		<h1><a href="/">Matthieu Schopp Portfolio</a></h1>
+	</div>
+		{% for portfolio_item in portfolio_items %}
+		<div>
+			<h3><a href="">{{portfolio_item.title}}</a></h3>
+			<p>{{portfolio_item.description | linebreaksbr}}</p>
+			<p>Industry : {{portfolio_item.industry}}</p>
+			<p>Employer : {{portfolio_item.employer}}</p>
+			<p>Started Date : {{portfolio_item.started_date}} - Ended Date : {{portfolio_item.ended_date}}</p>
+			<p> Categories : 
+			{% for portfolio_categorie in portfolio_item.categories.all %}
+				{{portfolio_categorie.title}} |
+			{% endfor %}
+			</p>
+			<p> Software and Tools : 
+			{% for portfolio_software_tool in portfolio_item.software_tools.all %}
+				{{portfolio_software_tool.title}} |
+			{% endfor %}
+			</p>
+			<p> Role : 
+			{% for portfolio_position in portfolio_item.position.all %}
+				{{portfolio_position.title}} |
+			{% endfor %}
+			</p>
+		</div>
+		{% endfor %}
+
+
+    </body>
+</html>
