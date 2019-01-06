@@ -51,7 +51,7 @@ class PortfolioItem(models.Model):
     main_categories = models.ManyToManyField(MainCategory, blank=True)
     software_tools = models.ManyToManyField(SoftwareAndTool, blank=True)
     industry_area = models.ForeignKey(IndustryArea, blank=True, null=True, on_delete=models.CASCADE)
-    role = models.ManyToManyField(Role, blank=True)
+    roles = models.ManyToManyField(Role, blank=True)
     employer = models.ForeignKey(Employer, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

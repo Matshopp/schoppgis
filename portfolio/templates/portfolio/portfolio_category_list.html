@@ -8,9 +8,9 @@
 	<div>
 		<h1><a href="/">Matthieu Schopp Portfolio</a></h1>
 	</div>
-		{% for position in portfolio_categories.positions %}
+		{% for role in portfolio_categories.roles %}
 		<div>
-			<h3><a href="{% url 'portfolio:portfolio_item_list' position.title %}">{{position.title}}</a></h3>
+			<h3><a href="{% url 'portfolio:portfolio_item_list' role.name %}">{{role.name}}</a></h3>
 			</p>
 		</div>
 		{% endfor %}
