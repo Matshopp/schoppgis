@@ -45,6 +45,7 @@ class Employer(models.Model):
 class PortfolioItem(models.Model):
 
     title = models.CharField(max_length=200)
+    picture = models.ImageField(null=True, blank=True)
     started_date = models.DateField()
     ended_date = models.DateField()
     description = models.TextField()
