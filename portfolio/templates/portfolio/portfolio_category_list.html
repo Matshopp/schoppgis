@@ -1,20 +1,79 @@
-<html>
-    <head>
-        <title>Matthieu Schopp Portfolio</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    </head>
-    <body>
-	<div>
-		<h1><a href="/">Matthieu Schopp Portfolio</a></h1>
-	</div>
-		{% for role in portfolio_categories.roles %}
-		<div>
-			<h3><a href="{% url 'portfolio:portfolio_item_list' role.name %}">{{role.name}}</a></h3>
-			</p>
-		</div>
-		{% endfor %}
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+  <form method="get">
+    {% csrf_token %}
+    <div class="well">
+      <h4 style="margin-top: 0">Filter</h4>
+      <div class="row">
+
+        <div class="form-group col-sm-4 col-md-3">
+			{{ portfolio_filter.form.industry_area.label_tag }}
+			{% render_field portfolio_filter.form.industry_area class="form-control" %}
+            <br>
+            {{ portfolio_filter.form.employer.label_tag }}
+			{% render_field portfolio_filter.form.employer class="form-control" %}
+        </div>
+		<div class="form-group col-sm-4 col-md-3">
+			{{ portfolio_filter.form.software_tools.label_tag }}
+			{% render_field portfolio_filter.form.software_tools class="form-control" %}
+        </div>
+		<div class="form-group col-sm-4 col-md-3">
+			{{ portfolio_filter.form.main_categories.label_tag }}
+			{% render_field portfolio_filter.form.main_categories class="form-control" %}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+      {% if has_filter %}
+            <a href="{%  url 'portfolio:portfolio_category_list' %}" class="btn btn-primary">Clear all filters</a>
+      {% endif %}
+    </div>
+  </form>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>started date</th>
+        <th>ended date</th>
+        <th>industry area</th>
+        <th>employer</th>
+      </tr>
+    </thead>
+    <tbody>
 
 
-    </body>
-</html>
+	{% for portfolio_item in portfolio_filter.qs %}
+        <tr>
+          <td>{{ portfolio_item.title }}</td>
+          <td>{{ portfolio_item.started_date }}</td>
+          <td>{{ portfolio_item.ended_date }}</td>
+          <td>{{ portfolio_item.industry_area }}</td>
+          <td>{{ portfolio_item.employer }}</td>
+
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+	{% endfor %}
+
+    </tbody>
+  </table>
+
+
+  {% block javascript %}
+    <script>
+
+    function clearForm() {
+    console.log('ddddddd')
+      document.getElementById("searchForm").reset();
+    }
+    </script>
+
+  {% endblock %}
+
+{% endblock %}

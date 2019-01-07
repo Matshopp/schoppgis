@@ -1,13 +1,6 @@
-<html>
-    <head>
-        <title>Matthieu Schopp Portfolio</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    </head>
-    <body>
-	<div>
-		<h1><a href="/">Matthieu Schopp Portfolio</a></h1>
-	</div>
+{% extends 'base.html' %}
+
+{% block content %}
 		{% for portfolio_item in portfolio_items %}
 		<div>
 			<h3><a href="">{{portfolio_item.title}}</a></h3>
@@ -25,14 +18,11 @@
 				{{software_tool.name}} |
 			{% endfor %}
 			</p>
-			<p> Role : 
+			<p> Role :
 			{% for role in portfolio_item.roles.all %}
 				{{role.name}} |
 			{% endfor %}
 			</p>
 		</div>
 		{% endfor %}
-
-
-    </body>
-</html>
+{% endblock %}
