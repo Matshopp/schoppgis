@@ -13,10 +13,10 @@
     </div>
     <div class="collapse navbar-collapse" id="main-menu">
       <ul class="nav navbar-nav">
-        <li{% if '/portfolio_category_list/' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'portfolio:portfolio_category_list' %}">Search</a>
+        <li>
+          <a href="{% url 'portfolio:home' %}">Home</a>
         </li>
-        <li><a href="https://simpleisbetterthancomplex.com">simpleisbetterthancomplex.com</a></li>
+        <li><a href="{% url 'portfolio:portfolio_filter' %}">Portfolio</a></li>
       </ul>
     </div>
   </div>

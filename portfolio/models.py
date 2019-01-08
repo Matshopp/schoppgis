@@ -60,3 +60,5 @@ class PortfolioItem(models.Model):
 
     class Meta:
         ordering = ('title',)
+
+    # https://stackoverflow.com/questions/34006994/how-to-upload-multiple-images-to-a-blog-post-in-django
