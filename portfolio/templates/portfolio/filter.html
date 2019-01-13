@@ -66,6 +66,8 @@
           <td>
             {% if portfolio_item.ended_date %}
               {{ portfolio_item.ended_date|date:"Y" }}
+            {% else %}
+              Current
             {% endif %}
           </td>
           <td>

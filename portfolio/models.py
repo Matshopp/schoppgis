@@ -40,8 +40,8 @@ class PortfolioItem(models.Model):
 
     title = models.CharField(max_length=200)
     picture = models.ImageField(null=True, blank=True)
-    started_date = models.DateField()
-    ended_date = models.DateField()
+    started_date = models.DateField(null=True, blank=True)
+    ended_date = models.DateField(null=True, blank=True)
     description = models.TextField()
     main_categories = models.ManyToManyField(MainCategory, blank=True)
     software_tools = models.ManyToManyField(SoftwareAndTool, blank=True)
