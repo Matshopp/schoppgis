@@ -1,7 +1,75 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
-<h1>{{ portfolioitem.title }}</h1>
+<di>
+    <h2>{{ portfolioitem.title }}</h2>
+    <p><span class="detail-text-category">Roles: </span>{{ portfolioitem.roles.all|join:", " }}</p>
+    <p><span class="detail-text-category">Employer: </span>{{ portfolioitem.employer }}</p>
+    <p><span class="detail-text-category">From: </span>{{ portfolioitem.started_date }}<span class="detail-text-category"> to </span>{{ portfolioitem.ended_date }}</p>
+</di>
 
+<hr>
+
+<div class="row">
+
+    <div class="col-xs-12 col-md-6 col-md-push-6" >
+
+        <div class="detail-container">
+
+            <h3>Description :</h3>
+            <p class="detail-text-description">{{ portfolioitem.description }}</p>
+
+            <div class="row">
+                <div class="detail-column">
+                   <h4><img src="{% static 'images/achivement.png' %}" class="detail-icon">Achievements :</h4>
+                    <ul>
+                    {% for accomplishment in portfolioitem.accomplishment_set.all %}
+                        <li>{{ accomplishment.description }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="detail-column">
+                    <h4><img src="{% static 'images/programming.png' %}" class="detail-icon">Technical environment :</h4>
+                    <ul>
+                    {% for software in portfolioitem.software_tools.all %}
+                        <li>{{ software.name }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-md-pull-6">
+
+        <div class="slider-align">
+            <div class="detail-slider">
+                {% for image in portfolioitem.images_set.all %}
+                <div><img src="{{ image.image.url }}" class="img-portfolio-slider"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.detail-slider').slick({
+            slidesToShow: 1,
+            autoplay: true,
+            speed: 2000,
+            centerPadding: '60px',
+            autoplaySpeed: 2500,
+            variableWidth: true,
+            centerMode: true
+        });
+    });
+</script>
 {% endblock %}

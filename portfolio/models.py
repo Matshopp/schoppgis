@@ -1,11 +1,5 @@
 from django.db import models
-
-
-# TODO : Add tagging app
-# TODO : Add role model with foreign keys
-# TODO : Add software-tools model with foreign keys
-# TODO : Add picture model with foreign keys
-# TODO : Add category model with foreign keys
+from django.template.defaultfilters import slugify
 
 class Role(models.Model):
     name=models.CharField(max_length=200)
@@ -61,4 +55,19 @@ class PortfolioItem(models.Model):
     class Meta:
         ordering = ('title',)
 
-    # https://stackoverflow.com/questions/34006994/how-to-upload-multiple-images-to-a-blog-post-in-django
+# https://stackoverflow.com/questions/34006994/how-to-upload-multiple-images-to-a-blog-post-in-django
+def get_image_filename(instance, filename):
+    title=instance.portfolio_item.title
+    slug = slugify(title)
+    return "portfolio_item_images/%s-%s" % (slug, filename)
+
+class Images(models.Model):
+    portfolio_item = models.ForeignKey(PortfolioItem, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=get_image_filename, verbose_name='Image')
+
+    def __str__(self):
+        return self.portfolio_item
+
+class Accomplishment(models.Model):
+    portfolio_item = models.ForeignKey(PortfolioItem, default=None, on_delete=models.CASCADE)
+    description=models.TextField()
