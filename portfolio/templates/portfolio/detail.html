@@ -6,9 +6,13 @@
 
 <div>
     <h2>{{ portfolioitem.title }}</h2>
+    {% if portfolioitem.roles %}
     <p><span class="detail-text-category">Roles: </span>{{ portfolioitem.roles.all|join:", " }}</p>
+    {% endif %}
+    {% if portfolioitem.employer %}
     <p><span class="detail-text-category">Employer: </span>{{ portfolioitem.employer }}</p>
-    <p><span class="detail-text-category">From: </span>{{ portfolioitem.started_date|date:"Y" }}<span class="detail-text-category"> to </span>{{ portfolioitem.ended_date|date:"Y" }}</p>
+    {% endif %}
+    <p><span class="detail-text-category">From: </span>{{ portfolioitem.started_date|date:"Y" }}<span class="detail-text-category"> {% if portfolioitem.ended_date %} to </span>{{ portfolioitem.ended_date|date:"Y" }} {% endif %}</p>
 </div>
 
 <hr>
