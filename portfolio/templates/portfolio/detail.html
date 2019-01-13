@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<di>
+<div>
     <h2>{{ portfolioitem.title }}</h2>
     <p><span class="detail-text-category">Roles: </span>{{ portfolioitem.roles.all|join:", " }}</p>
     <p><span class="detail-text-category">Employer: </span>{{ portfolioitem.employer }}</p>
     <p><span class="detail-text-category">From: </span>{{ portfolioitem.started_date }}<span class="detail-text-category"> to </span>{{ portfolioitem.ended_date }}</p>
-</di>
+</div>
 
 <hr>
 
@@ -21,7 +21,9 @@
 
             <h3>Description :</h3>
             <p class="detail-text-description">{{ portfolioitem.description }}</p>
-
+            {% if portfolioitem.link %}
+                <p><a href="{{ portfolioitem.link }}">{{ portfolioitem.link }}</a></p>
+            {% endif %}
             <div class="row">
                 <div class="detail-column">
                    <h4><img src="{% static 'images/achivement.png' %}" class="detail-icon">Achievements :</h4>

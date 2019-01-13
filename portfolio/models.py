@@ -48,6 +48,7 @@ class PortfolioItem(models.Model):
     industry_area = models.ForeignKey(IndustryArea, blank=True, null=True, on_delete=models.CASCADE)
     roles = models.ManyToManyField(Role, blank=True)
     employer = models.ForeignKey(Employer, blank=True, null=True, on_delete=models.CASCADE)
+    link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title
