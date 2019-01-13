@@ -58,8 +58,8 @@
             {% endif %}
           </td>
           <td><p><a href="{% url 'portfolio:detail' portfolio_item.id %}">{{ portfolio_item.title }}</a></p></td>
-          <td>{{ portfolio_item.started_date }}</td>
-          <td>{{ portfolio_item.ended_date }}</td>
+          <td>{{ portfolio_item.started_date|date:"Y" }}</td>
+          <td>{{ portfolio_item.ended_date|date:"Y" }}</td>
           <td>{{ portfolio_item.industry_area }}</td>
           <td>{{ portfolio_item.roles.all|join:", " }}</td>
           <td>{{ portfolio_item.employer }}</td>
