@@ -66,8 +66,11 @@ class Images(models.Model):
     image = models.ImageField(upload_to=get_image_filename, verbose_name='Image')
 
     def __str__(self):
-        return self.portfolio_item
+        return self.portfolio_item.title
 
 class Accomplishment(models.Model):
     portfolio_item = models.ForeignKey(PortfolioItem, default=None, on_delete=models.CASCADE)
     description=models.TextField()
+
+    def __str__(self):
+        return self.portfolio_item.title
