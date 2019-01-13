@@ -58,12 +58,31 @@
             {% endif %}
           </td>
           <td><p><a href="{% url 'portfolio:detail' portfolio_item.id %}">{{ portfolio_item.title }}</a></p></td>
-          <td>{{ portfolio_item.started_date|date:"Y" }}</td>
-          <td>{{ portfolio_item.ended_date|date:"Y" }}</td>
-          <td>{{ portfolio_item.industry_area }}</td>
-          <td>{{ portfolio_item.roles.all|join:", " }}</td>
-          <td>{{ portfolio_item.employer }}</td>
-
+          <td>
+            {% if portfolio_item.started_date %}
+              {{ portfolio_item.started_date|date:"Y" }}
+            {% endif %}
+          </td>
+          <td>
+            {% if portfolio_item.ended_date %}
+              {{ portfolio_item.ended_date|date:"Y" }}
+            {% endif %}
+          </td>
+          <td>
+            {% if portfolio_item.industry_area %}
+              {{ portfolio_item.industry_area }}
+            {% endif %}
+          </td>
+          <td>
+            {% if portfolio_item.roles %}
+              {{ portfolio_item.roles.all|join:", " }}
+            {% endif %}
+          </td>
+          <td>
+            {% if portfolio_item.employer %}
+              {{ portfolio_item.employer }}
+            {% endif %}
+          </td>
         </tr>
       {% empty %}
         <tr>
