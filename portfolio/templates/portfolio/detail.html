@@ -32,20 +32,24 @@
             {% endif %}
             <div class="row">
                 <div class="detail-column">
-                   <h4><img src="{% static 'images/achivement.png' %}" class="detail-icon">Achievements :</h4>
-                    <ul>
-                    {% for accomplishment in portfolioitem.accomplishment_set.all %}
-                        <li>{{ accomplishment.description }}</li>
-                    {% endfor %}
-                    </ul>
+                   {% if portfolioitem.accomplishment_set.all %}
+                       <h4><img src="{% static 'images/achivement.png' %}" class="detail-icon">Achievements :</h4>
+                        <ul>
+                        {% for accomplishment in portfolioitem.accomplishment_set.all %}
+                            <li>{{ accomplishment.description }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
                 <div class="detail-column">
-                    <h4><img src="{% static 'images/programming.png' %}" class="detail-icon">Technical environment :</h4>
-                    <ul>
-                    {% for software in portfolioitem.software_tools.all %}
-                        <li>{{ software.name }}</li>
-                    {% endfor %}
-                    </ul>
+                    {% if portfolioitem.software_tools.all %}
+                        <h4><img src="{% static 'images/programming.png' %}" class="detail-icon">Technical environment :</h4>
+                        <ul>
+                        {% for software in portfolioitem.software_tools.all %}
+                            <li>{{ software.name }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
             </div>
         </div>
