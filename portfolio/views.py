@@ -49,3 +49,6 @@ def portfolio_item(request):
         formset = ImageFormSet(queryset=Images.objects.none())
 
     return render(request, 'index.html', {'postForm': portfolioItemForm, 'formset': formset})
+
+# /*https://stackoverflow.com/questions/17591447/how-to-reload-current-page-without-losing-any-form-data*
+# https://sixfeetup.com/blog/making-your-django-templates-ajax-y

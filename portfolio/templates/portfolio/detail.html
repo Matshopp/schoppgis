@@ -4,9 +4,11 @@
 
 {% block content %}
 
+<a href="{%  url 'portfolio:portfolio_filter' %}" class="btn btn-primary">< Back</a>
+
 <div>
     <h2>{{ portfolioitem.title }}</h2>
-    {% if portfolioitem.roles %}
+    {% if portfolioitem.roles.all %}
     <p><span class="detail-text-category">Roles: </span>{{ portfolioitem.roles.all|join:", " }}</p>
     {% endif %}
     {% if portfolioitem.employer %}
