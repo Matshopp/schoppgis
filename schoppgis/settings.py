@@ -26,7 +26,7 @@ SECRET_KEY = '=embtcgb5u9dppi-t&8f)3&+5zpp!%d#=axwz*vcgj@7f^6=yo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'matshopp.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', 'matshopp.pythonanywhere.com', 'www.schopp-gis.tech', 'schopp-gis.tech']
 
 
 # Application definition
